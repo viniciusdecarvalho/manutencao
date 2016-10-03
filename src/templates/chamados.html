@@ -1,0 +1,60 @@
+<div ui-content-for="title">
+
+	<h2><span class="fa fa-envelope-o"></span> Chamados</h2>
+
+</div>
+
+<div class="btn-group pull-right" ui-yield-to="navbarAction">
+	<div ui-toggle="uiSidebarRight" class="btn">
+		<i class="fa fa-comment"></i> Chat
+	</div>
+</div>
+
+<div class="scrollable" ui-state="searchBar">	
+	
+  <div class="scrollable-content">
+	  
+    <div class="section">
+
+		<a class="btn btn-primary btn-block">
+			<i class="fa fa-plus"></i> Adicionar novo chamado
+		</a>
+		<hr />
+        
+      <div class="panel"
+	  	ng-class="chamado.prioridade" 
+	  	ng-repeat="chamado in chamados | orderBy: order">
+        <div class="panel-heading">
+          <div class="btn-group pull-right">
+            <a ui-turn-on='myDropdown{{idx}}' class='btn'>
+              <!--<i class="fa fa-ellipsis-v"></i>-->
+			  <i class="fa fa-gear"></i>
+            </a>
+            <ul 
+              ui-state="myDropdown{{idx}}"
+              class="dropdown-menu"
+              ui-outer-click="Ui.turnOff('myDropdown' + idx)"
+              ui-outer-click-if="Ui.active('myDropdown' + idx)"
+              role="menu"
+              ui-show="myDropdown{{idx}}"
+              ui-turn-off="myDropdown{{idx}}">
+
+              <li><a>Action</a></li>
+              <li><a>Another action</a></li>
+              <li><a>Something else here</a></li>
+              <li class="divider"></li>
+              <li><a>Separated link</a></li>
+            </ul>
+          </div>
+          	<h3 class="panel-title">
+			  Problema <b>{{chamado.tipo}}</b> - Cadastro <b>{{chamado.data}} {{chamado.hora}}</b> <b class="pull-right">{{chamado.situacao}}</b>
+			</h3>
+        </div>
+        <div class="panel-body">
+           Problema acontece depois de iniciar a maquina, impedidindo o seu uso
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

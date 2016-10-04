@@ -4,6 +4,8 @@
 		'ngRoute',
 		'mobile-angular-ui',
 		'Services.Routes',
+		'Api.Chamados',
+		'Api.Maquinas',
 		'Controllers.Chamados'
 	])
 	.config(function ($compileProvider, $locationProvider, $httpProvider, $logProvider) {

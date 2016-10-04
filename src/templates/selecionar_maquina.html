@@ -1,0 +1,27 @@
+<div class="modal" ui-if='selecionar_maquina' ui-state='selecionar_maquina'>
+	<div class="modal-backdrop in">
+
+	</div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" 
+						ui-turn-off="selecionar_maquina">&times;</button>
+				<h4 class="modal-title">Selecionar Maquina</h4>
+			</div>
+			
+			<div class="modal-body">
+				<div class="list-group">
+					<a ng-repeat="maquina in maquinas" href="#" class="list-group-item">
+						{{ maquina.nome }} <i class="fa fa-chevron-right pull-right"></i>
+					</a>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button ui-turn-off="selecionar_maquina" class="btn btn-default">Fechar</button>
+				<button ui-turn-off="selecionar_maquina" class="btn btn-primary">Selecionar</button>
+			</div>
+		</div>
+	</div>
+</div>

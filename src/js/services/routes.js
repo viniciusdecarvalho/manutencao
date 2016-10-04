@@ -12,7 +12,7 @@
     	.when('/chamados', {
     		templateUrl:'chamados.html',  
             reloadOnSearch: false,
-            controller: 'Chamados'
+            controller: 'ChamadosController'
     	})
     	.when('/oficina', {
     		templateUrl:'oficina.html',  

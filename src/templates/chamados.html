@@ -1,13 +1,14 @@
 <div ui-content-for="title">
-
-	<h2><span class="fa fa-envelope-o"></span> Chamados</h2>
-
+	<span class="fa fa-envelope-o"></span> Chamados		
 </div>
 
-<div class="btn-group pull-right" ui-yield-to="navbarAction">
-	<div ui-toggle="uiSidebarRight" class="btn">
-		<i class="fa fa-comment"></i> Chat
-	</div>
+<div ui-content-for="navbarAction">
+	<a href="" 
+		ui-turn-on="selecionar_maquina"
+		class="btn btn-default">
+		<i class="fa fa-gear"></i>
+		{{maquina.nome}}
+	</a>
 </div>
 
 <div class="scrollable" ui-state="searchBar">	
@@ -16,28 +17,29 @@
 	  
     <div class="section">
 
-		<a class="btn btn-primary btn-block">
-			<i class="fa fa-plus"></i> Adicionar novo chamado
-		</a>
-		<hr />
+		<div class="section section-break">
+			<a class="btn btn-primary btn-block">
+				<i class="fa fa-plus"></i> Adicionar novo chamado
+			</a>			
+		</div>		
         
       <div class="panel"
 	  	ng-class="chamado.prioridade" 
-	  	ng-repeat="chamado in chamados | orderBy: order">
+	  	ng-repeat="chamado in chamados">
         <div class="panel-heading">
           <div class="btn-group pull-right">
-            <a ui-turn-on='myDropdown{{idx}}' class='btn'>
+            <a ui-turn-on='myDropdown{{$index}}' class='btn'>
               <!--<i class="fa fa-ellipsis-v"></i>-->
-			  <i class="fa fa-gear"></i>
+			  <i class="fa fa-edit"></i>
             </a>
             <ul 
-              ui-state="myDropdown{{idx}}"
+              ui-state="myDropdown{{$index}}"
               class="dropdown-menu"
-              ui-outer-click="Ui.turnOff('myDropdown' + idx)"
-              ui-outer-click-if="Ui.active('myDropdown' + idx)"
+              ui-outer-click="Ui.turnOff('myDropdown' + $index)"
+              ui-outer-click-if="Ui.active('myDropdown' + $index)"
               role="menu"
-              ui-show="myDropdown{{idx}}"
-              ui-turn-off="myDropdown{{idx}}">
+              ui-show="myDropdown{{$index}}"
+              ui-turn-off="myDropdown{{$index}}">
 
               <li><a>Action</a></li>
               <li><a>Another action</a></li>
@@ -57,4 +59,8 @@
 
     </div>
   </div>
+</div>
+
+<div ui-content-for="modals">
+  <div ng-include="'selecionar_maquina.html'"></div>
 </div>

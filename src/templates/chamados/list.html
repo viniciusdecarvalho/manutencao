@@ -1,0 +1,75 @@
+<div ui-content-for="title">
+	<span class="fa fa-envelope-o"></span> Chamados		
+</div>
+
+<div ui-content-for="navbarAction">
+	<a href="" 
+		ui-turn-on="selecionar_maquina"
+		class="btn btn-default">
+		<i class="fa fa-gear"></i>
+		Config. Maquina
+	</a>
+</div>
+
+<div class="scrollable" ui-state="searchBar">	
+	
+  	<div class="scrollable-content">
+	  
+    	<div class="section">
+
+			<div class="section section-break">
+				<a href="" class="btn btn-primary btn-block"
+					ui-turn-on="edit">
+					<i class="fa fa-plus"></i> Adicionar novo chamado
+				</a>			
+			</div>		
+    
+			<div class="panel-group"         
+		        ui-state='myAccordion' 
+		        ui-default='0'>
+
+				<div class="panel"
+					ng-class="chamado.prioridade" 
+					ng-repeat="chamado in chamados">
+
+				<div class="panel-heading" ui-set="{'myAccordion': $index}">
+				  	<div class="btn-group pull-right">
+				        <a ui-turn-on='myDropdown{{$index}}' class='btn'>
+				          	<!--<i class="fa fa-ellipsis-v"></i>-->
+						  	<i class="fa fa-edit"></i>
+				        </a>
+				        <ul 
+							ui-state="myDropdown{{$index}}"
+							class="dropdown-menu"
+							ui-outer-click="Ui.turnOff('myDropdown' + $index)"
+							ui-outer-click-if="Ui.active('myDropdown' + $index)"
+							role="menu"
+							ui-show="myDropdown{{$index}}"
+							ui-turn-off="myDropdown{{$index}}">
+
+							<li><a>Action</a></li>
+							<li><a>Another action</a></li>
+							<li><a>Something else here</a></li>
+							<li class="divider"></li>
+							<li><a>Separated link</a></li>
+				        </ul>
+				  	</div>
+				      	<h3 class="panel-title">
+						  Problema <b>{{chamado.tipo}}</b> - Cadastro <b>{{chamado.data}} {{chamado.hora}}</b> <b class="pull-right">{{chamado.situacao}}</b>
+						</h3>
+				</div>
+				<div ui-if="myAccordion == {{$index}}">
+					<div class="panel-body">
+					   {{chamado.defeito}}
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>
+
+<div ui-content-for="modals">
+  	<div ng-include="'selecionar_maquina.html'"></div>
+  	<div ng-include="'chamados/edit.html'"></div>
+</div>  

@@ -1,0 +1,117 @@
+<div class="modal" ui-if='edit' ui-state='edit'>
+	<div class="modal-backdrop in"></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" 
+						ui-turn-off="edit">&times;</button>
+				<h4 class="modal-title">Informações do Chamado</h4>
+			</div>
+			
+			<div class="modal-body">
+				
+				<form role="form" ng-submit='login()'>
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<label>Tipo</label>
+							<div class="btn-group justified">
+								<a href 
+									class="btn btn-default" 
+									ui-turn-on='btnM' 
+									ui-state='btnM' 
+									ui-class="{'active': btnM}" 
+									ui-exclusion-group='tipos'
+									ng-click="chamado.tipo='MECANICA'">Mecânica</a>
+								<a href 
+									class="btn btn-default" 
+									ui-turn-on='btnE' 
+									ui-state='btnE' 
+									ui-class="{'active': btnE}" 
+									ui-exclusion-group='tipos'
+									ng-click="chamado.tipo='ELETRICA'">Elétrica</a>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-md-3">
+							<label>Setor</label>
+							<input type="text"
+									class="form-control"
+									placeholder="Informe o setor"
+									ng-model="chamado.setor">
+						</div>
+						<div class="col-lg-6 col-md-3">
+							<label>Encarregado</label>
+							<input type="text"
+									class="form-control"
+									placeholder="Informe o encarregado"
+									ng-model="chamado.encarregado">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-md-3">
+							<div>
+								<label>Maquina</label>
+								<input type="text" 
+									class="form-control"
+									placeholder="Maquina/Operacao"
+									ng-model="chamado.maquina">
+							</div>							
+						</div>
+
+						<div class="col-lg-6 col-md-3">
+							<div>
+								<label>Operadora</label>
+								<input type="text" 
+									class="form-control"
+									placeholder="Operadora"
+									ng-model="chamado.operadora">
+							</div>							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<label>Defeito</label>
+							<textarea class="form-control" ng-model="chamado.defeito"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<label>Prioridade</label>
+							<div class="btn-group justified">
+								<a href 
+									class="btn btn-default" 
+									ui-turn-on='btnLeve' 
+									ui-state='btnLeve' 
+									ui-class="{'active': btnLeve}" 
+									ui-exclusion-group='prioridades'
+									ng-click="chamado.prioridade='panel-success'">Leve</a>
+								<a href 
+									class="btn btn-default" 
+									ui-turn-on='btnIntermediario' 
+									ui-state='btnIntermediario' 
+									ui-class="{'active': btnIntermediario}" 
+									ui-exclusion-group='prioridades'
+									ng-click="chamado.prioridade='panel-warning'">Intermediario</a>
+								<a href 
+									class="btn btn-default" 
+									ui-turn-on='btnUrgente' 
+									ui-state='btnUrgente' 
+									ui-class="{'active': btnUrgente}" 
+									ui-exclusion-group='prioridades'
+									ng-click="chamado.prioridade='panel-danger'">Urgente</a>								
+							</div>
+						</div>
+					</div>					
+				</form>
+
+			</div>
+
+			<div class="modal-footer">
+				<button ui-turn-off="edit" class="btn btn-default">Cancelar</button>
+				<button ui-turn-off="edit" class="btn btn-primary" ng-click="novoChamado()">Salvar</button>
+			</div>
+		</div>
+	</div>
+</div>

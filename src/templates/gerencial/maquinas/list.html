@@ -1,0 +1,28 @@
+<div ui-content-for="title">
+  <span><i class="fa fa-gears"></i> Maquinas</span>
+</div>
+
+<div class="scrollable" ui-state="searchBar">
+  
+    <div class="section section-break">
+        <a href="" class="btn btn-primary btn-block"
+            ui-turn-on="edit">
+            <i class="fa fa-plus"></i> Adicionar maquina
+        </a>			
+    </div>
+
+  <div class="scrollable-content" ui-scroll-bottom='bottomReached()'>
+    <div class="list-group">
+      <a ng-repeat="item in [1,2,3,4]" href="#" class="list-group-item">
+        Maquina #{{ item }} <i class="fa fa-chevron-right pull-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!--<a class="btn btn-block btn-lg btn-primary scrollable-footer" ui-toggle='searchBar'>
+    <i class="fa fa-search"></i> 
+    <span ui-hide="searchBar">Show</span>
+    <span ui-show="searchBar">Hide</span>
+    Search Bar
+  </a>-->
+</div>

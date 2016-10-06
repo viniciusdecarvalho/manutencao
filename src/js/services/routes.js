@@ -10,7 +10,7 @@
     		reloadOnSearch: false
     	})
     	.when('/chamados', {
-    		templateUrl:'chamados.html',  
+    		templateUrl:'chamados/list.html',  
             reloadOnSearch: false,
             controller: 'ChamadosController'
     	})
@@ -19,10 +19,14 @@
             reloadOnSearch: false
     	})
     	.when('/gerencial', {
-    		templateUrl:'gerencial.html',  
+    		templateUrl:'gerencial/list.html',  
             reloadOnSearch: false
-    	});
-
+    	})
+        .when('/gerencial/maquinas', {
+    		templateUrl:'gerencial/maquinas/list.html',  
+            reloadOnSearch: false
+    	})
+        .otherwise('/');
     })
 
     .run(function($rootScope, $location) {
